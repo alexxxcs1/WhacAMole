@@ -13,6 +13,7 @@ constructor(props) {
   this.state = {};
      this.refreshProps = this.refreshProps.bind(this);
      this.goToRule = this.goToRule.bind(this);
+     this.goToRank = this.goToRank.bind(this);
 }
 componentWillReceiveProps(nextprops) {
   this.refreshProps(nextprops);
@@ -25,6 +26,9 @@ refreshProps(props) {
 }
 goToRule(){
     this.context.HandleRouteStatus(2);
+}
+goToRank(){
+    this.context.HandleRouteStatus(4);
 }
 render() {
   return (
@@ -40,7 +44,7 @@ render() {
         </div>
         <div className={[style.ButtonGroup,'childcenter'].join(' ')}>
             <div className={style.Button} onClick={this.goToRule}>活动规则</div>
-            <div className={style.Button}>奖券查看</div>
+            <div className={style.Button} onClick={this.goToRank}>奖券查看</div>
         </div>
     </div>
    )
