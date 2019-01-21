@@ -1,0 +1,41 @@
+.ViewBox{
+    width: 100%;
+    height: 100%;
+    .ListBox{
+        width: 570px;
+        min-height: 845px;
+        border-radius: 10px;
+        box-shadow: #b40b0a 0 0 0 1px inset;
+
+        .ListHead{
+            width: 100%;
+            height: 57px;
+            box-shadow: #b40b0a 0 -3px 0 -2px inset;
+
+            
+        }
+        .ListRow{
+            width: 100%;
+            height: 71px;
+            box-shadow: #b40b0a 0 -3px 0 -2px inset;
+        }
+        .ListColumn{
+            width: 25%;
+            height: 100%;
+            color: #b40b0a;
+            // background: #000;
+        }
+        .ListOfMy{
+            background: rgba($color: #b30706, $alpha: .2)
+        }
+    }
+    .ReturnIndex{
+        width: 218px;
+        height: 50px;
+        background: linear-gradient(#f36e01,#b91918);
+        border-radius: 3px;
+        margin-top: 62px;
+        color: #fff;
+        font-size: 31px;
+    }
+}

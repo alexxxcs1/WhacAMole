@@ -1,0 +1,132 @@
+.ViewBox{
+    width: 100%;
+    height: 100%;
+    .maintitle{
+        width: 399px;
+        margin-left: 18px;
+        margin-bottom: -40px;
+        animation: shineIn 0.5s forwards;
+        position: relative;
+        z-index: 10;
+    }
+    .EffectBox{
+        width: 100%;
+        height: 586px;
+        position: relative;
+        margin-bottom: 90px;
+        .fishroad{
+            width: 50%;
+            position: absolute;
+            top: 167px;
+            right: 41px;
+            animation: roate 4s forwards linear;
+            .fishpng{
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                width: 94px;
+                // animation: Tailswing 0.5s 0s 4;
+            }
+            .fishpng:nth-child(1){
+                opacity: 0;
+                animation: Tailswing 1s 0.5s backwards 4;
+                transform: scaleX(-1)
+            }
+            .fishpng:nth-child(2){
+                animation: Tailswing 1s 0s backwards 4;
+                // background: #000;
+            }
+        }
+        
+        .hangdroppng{
+            width: 103px;
+            position: absolute;
+            top: 247px;
+            left: 203px;
+            animation: scaleXIn 0.5s 2.5s backwards;
+        }
+        .Titlepng{
+            width: 624px;
+        }
+    }
+    .ButtonGroup{
+        .Button{
+            padding: 9px 40px;
+            margin:  0 40px;
+            border-radius: 3px;
+            background: linear-gradient(#f87701 10%,#b20201 100%);
+            color: #fff;
+            font-size: 31px;
+        }
+        
+        
+    }
+}
+@keyframes scaleXIn{
+    0%{
+        transform: scaleX(0);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+}
+@keyframes Tailswing{
+    0%{
+        opacity: 0;
+        // transform: scaleX(1);
+    }
+    50%{
+        opacity: 1;
+        // transform: scaleX(-1);
+    }
+    100%{
+        opacity: 0;
+        // transform: scaleX(1);
+    }
+}
+@keyframes roate{
+    0%{
+        opacity: 0;
+        transform: rotate(90deg);
+    }
+    100%{
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+@keyframes shineIn{
+    0% {
+        mask: linear-gradient(90deg, transparent 0%,transparent 100%);
+    }
+    10%{
+        mask: linear-gradient(90deg,#000 0%,transparent 10%,transparent 100%);
+    }
+    20%{
+        mask: linear-gradient(90deg,#000 0%,transparent 20%,transparent 100%);
+    }
+    30%{
+        mask: linear-gradient(90deg,#000 0%,transparent 30%,transparent 100%);
+    }
+    40%{
+        mask: linear-gradient(90deg,#000 0%,transparent 40%,transparent 100%);
+    }
+    50%{
+        mask: linear-gradient(90deg,#000 0%,transparent 50%,transparent 100%);
+    }
+    60%{
+        mask: linear-gradient(90deg,#000 0%,transparent 60%,transparent 100%);
+    }
+    70%{
+        mask: linear-gradient(90deg,#000 0%,transparent 70%,transparent 100%);
+    }
+    80%{
+        mask: linear-gradient(90deg,#000 0%,transparent 80%,transparent 100%);
+    }
+    90%{
+        mask: linear-gradient(90deg,#000 0%,transparent 90%,transparent 100%);
+    }
+    100%{
+        
+    }
+
+}
