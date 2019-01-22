@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import style from './GameView.scss'
 import PropTypes from "prop-types";
 import DarkBox from 'components/DarkBox'
+import {api} from 'common/app'
 
 import mice from './img/mice.png'
 import miceonhit from './img/miceonhit.png'
@@ -54,6 +55,7 @@ export class GameView extends Component {
 constructor(props) {
   super(props);
   this.state = {
+    gameResult:null,
     gameResultShow:false,
 
     balloonFlyIng:false,
@@ -216,11 +218,22 @@ HandleResult(boolean){
     this.setState(this.state);
 }
 gameEnd(){
-    clearInterval(gameInterval);
-    clearInterval(gameTimerInterval);
-    this.state.gameResultShow = true;
-    this.state.gamepaused = true;
-    this.setState(this.state);
+    api.setScore(this.state.score>0?this.state.score:0).then(res=>{
+        if (res.code == 200) {
+            clearInterval(gameInterval);
+            clearInterval(gameTimerInterval);
+            this.state.gameResultShow = true;
+            this.state.gameResult = res.data;
+            this.state.gamepaused = true;
+            this.setState(this.state);
+        }else{
+            alert(res.msg);
+            this.gameRestart();
+        }
+    },err=>{
+        console.log(err);
+        this.gameRestart();
+    })
 }
 gameRestart(){
     this.state.score = 0;
@@ -238,16 +251,16 @@ render() {
         {/* {this.state.score} */}
         {this.state.gameResultShow?<DarkBox >
 
-            <div className={[style.ResultBox,'childcenter childcolumn'].join(' ')}>
+            {this.state.gameResult?<div className={[style.ResultBox,'childcenter childcolumn'].join(' ')}>
                 <div>游戏结束</div>
-                <div>本局分数： <span>{this.state.score*1000000}分</span>  </div>
-                <div>历史成绩： <span>9999999分</span> </div>
-                <div>奖券数： <span>9999999张</span> </div>
+                <div>本局分数： <span>{this.state.gameResult.nowScore}分</span>  </div>
+                <div>历史成绩： <span>{this.state.gameResult.maxScore}分</span> </div>
+                <div>奖券数： <span>{this.state.gameResult.amountScore}张</span> </div>
                 <div className={[style.ButtonGroup,'childcenter'].join(' ')}>
                     <button className={style.Button} onClick={this.gameRestart}>再来一次</button>
                     <button className={style.Button} onClick={this.nextView}>奖券查看</button>
                 </div>
-            </div>
+            </div>:''}
 
         </DarkBox>:''}
         {this.state.balloonInfoShow?<DarkBox >

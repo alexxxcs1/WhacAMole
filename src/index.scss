@@ -91,7 +91,7 @@ body {
      position: fixed;
      top: 0px;
      left: 0px;
-     font-family: "SourceHanSansCN-Regular","SourceHanSansCN-Light","SourceHanSansCN-Bold";
+     font-family: "微软雅黑","Microsoft YaHei" !important;
      margin: 0 auto;
     //  background: #fff;
     //  color: #333333 !important;
@@ -129,17 +129,17 @@ body {
   align-items: flex-end;
 }
 
-@font-face {
-  font-family: SourceHanSansCN-Regular;
-  src: url(http://client-qiniu.rup-china.com/font/SourceHanSansCN-Regular.otf);
-}
+// @font-face {
+//   font-family: SourceHanSansCN-Regular;
+//   src: url(http://client-qiniu.rup-china.com/font/SourceHanSansCN-Regular.otf);
+// }
 
-@font-face {
-  font-family: SourceHanSansCN-Light;
-  src: url(http://client-qiniu.rup-china.com/font/SourceHanSansCN-Light.otf);
-}
+// @font-face {
+//   font-family: SourceHanSansCN-Light;
+//   src: url(http://client-qiniu.rup-china.com/font/SourceHanSansCN-Light.otf);
+// }
 
-@font-face {
-  font-family: SourceHanSansCN-Bold;
-  src: url(http://client-qiniu.rup-china.com/font/SourceHanSansCN-Bold.otf);
-}
+// @font-face {
+//   font-family: SourceHanSansCN-Bold;
+//   src: url(http://client-qiniu.rup-china.com/font/SourceHanSansCN-Bold.otf);
+// }

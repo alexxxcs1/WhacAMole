@@ -5,6 +5,8 @@ import maintitle from './imgs/maintitle.png'
 import username from './imgs/username.png'
 import userregion from './imgs/userregion.png'
 import userid from './imgs/userid.png'
+
+import {api} from 'common/app'
   
 let timmer;
 export class LoginView extends Component {
@@ -44,7 +46,16 @@ onInputChange(type,e){
     this.setState(this.state);
 }
 Login(){
-    this.context.HandleRouteStatus(1);
+    api.UserLogin(this.state.username,this.state.userid,this.state.userregion).then(res=>{
+        console.log(res);
+        if (res.code == 200) {
+            this.context.HandleRouteStatus(1);
+        }else{
+            alert(res.msg);
+        }
+    },err=>{
+        console.log(err);
+    })
 }
 render() {
   return (

@@ -8,6 +8,15 @@
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
+    .toplogo{
+        width: 682px;
+        pointer-events: none;
+        position: absolute;
+        z-index: 9;
+        top: 29px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
     .FloatBottom{
         pointer-events: none;
         position: absolute;
