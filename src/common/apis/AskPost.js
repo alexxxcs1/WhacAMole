@@ -23,6 +23,12 @@ const AskPost = (ajaxinstance) => {
             url
         }));
     }
+    //微信授权
+    customer.getShare = (url) => {
+        return ajaxinstance.post('index/getWeChat',qs.stringify({
+            url
+        }));
+    }
     
     
     return customer

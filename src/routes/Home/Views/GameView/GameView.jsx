@@ -9,6 +9,7 @@ import miceonhit from './img/miceonhit.png'
 import cat from './img/cat.png'
 import catonhit from './img/catonhit.png'
 import harm from './img/harm.png'
+import error from './img/error.png'
 
 import balloon0 from './img/balloon0.png'
 import balloon1 from './img/balloon1.png'
@@ -55,6 +56,8 @@ export class GameView extends Component {
 constructor(props) {
   super(props);
   this.state = {
+    tipsStatus:0,
+
     gameResult:null,
     gameResultShow:false,
 
@@ -109,6 +112,9 @@ componentDidMount() {
   ballonArray.sort(function() {
     return .5 - Math.random();
   });
+  TextData.sort(function() {
+    return .5 - Math.random();
+  });
 }
 refreshProps(props) {
   
@@ -159,9 +165,9 @@ componentWillUnmount(){
 }
 onHitMice(pos){
     if (this.state.MiceType[pos[0]][[pos[1]]]) {
-        this.state.score-=1;
+        this.state.score-=3;
     }else{
-        this.state.score+=1;
+        this.state.score+=3;
     }
     this.state.HitStatus[pos[0]][[pos[1]]] = 1;
     this.state.GameArray[pos[0]][[pos[1]]] = 0;
@@ -182,9 +188,9 @@ createGameBox(){
                                     <div className={[style.HoleBox,'childcenter childcolumn childcontentend'].join(' ')}>
                                         <div className={style.Hole}>
                                             <div className={[style.mice,this.state.GameArray[z][x]?style.miceUp:style.miceDown].join(' ')}>
-                                                {this.state.HitStatus[z][x]?<img src={harm} className={style.Harm} alt=""/>:''}
+                                                {this.state.HitStatus[z][x]?(this.state.MiceType[z][x]?<img src={error} className={style.error} alt=""/>:<img src={harm} className={style.Harm} alt=""/>):''}
                                                 <img  onClick={this.onHitMice.bind(this,[z,x])} src={this.state.GameArray[z][x]?(this.state.MiceType[z][x]?cat:mice):this.state.HitStatus[z][x]?(this.state.MiceType[z][x]?catonhit:miceonhit):(this.state.MiceType[z][x]?cat:mice)}   alt=""/>
-                                                {this.state.MiceType[z][x]?'':<div className={[style.TextBox,'childcenter'].join(' ')}>{name[this.state.NameArray[z][x]]}</div>}
+                                                {this.state.MiceType[z][x]?<div className={[style.TextBox,'childcenter'].join(' ')}>ART</div>:<div className={[style.TextBox,'childcenter'].join(' ')}>{name[this.state.NameArray[z][x]]}</div>}
                                             </div>
                                         </div>
                                     </div>)
@@ -203,9 +209,10 @@ createGameBox(){
 BalloonClick(index){
     ballonArray[index].clicked = true;
     this.state.score+=5;
+    this.state.tipsStatus+=1;
     this.state.gamepaused = true;
     this.state.balloonInfoShow = true;
-    this.state.balloonInfo = TextData[Math.round(Math.random()*(TextData.length-1))];
+    this.state.balloonInfo = TextData[this.state.tipsStatus];
     this.setState(this.state);
 }
 HandleBaloonInfo(boolean){

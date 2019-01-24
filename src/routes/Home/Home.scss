@@ -8,6 +8,37 @@
     position: relative;
     background-size: cover;
     background-repeat: no-repeat;
+    .MucisBox{
+        width: 50px;
+        height: 50px;
+        top: 120px;
+        right: 50px;
+        position: absolute;
+        border-radius: 50%;
+        
+        img{
+            width: 100%;
+        }
+    }
+    .MusicOn{
+        animation: musicwave 0.4s infinite ease-in-out;
+    }
+    .MusicOff{
+        filter: grayscale(100%);
+    }
+@keyframes musicwave {
+    0%{
+        // rgba($color: #b30706, $alpha: 0.3)
+        box-shadow: rgba($color: #b30706, $alpha: 0.3) 0 0 5px 2px,#fff 0 0 0 4px,rgba($color: #b30706, $alpha: 0.2) 0 0 5px 6px,#fff 0 0 0 8px,rgba($color: #b30706, $alpha: 0.1) 0 0 5px 10px;
+    }
+    50%{
+        box-shadow: rgba($color: #b30706, $alpha: 0.3) 0 0 5px 4px,#fff 0 0 0 8px,rgba($color: #b30706, $alpha: 0.2) 0 0 5px 12px,#fff 0 0 0 16px,rgba($color: #b30706, $alpha: 0.1) 0 0 5px 20px;
+    }
+    100%{
+        // rgba($color: #b30706, $alpha: 0.3)
+        box-shadow: rgba($color: #b30706, $alpha: 0.3) 0 0 5px 2px,#fff 0 0 0 4px,rgba($color: #b30706, $alpha: 0.2) 0 0 5px 6px,#fff 0 0 0 8px,rgba($color: #b30706, $alpha: 0.1) 0 0 5px 10px;
+    }
+}
     .toplogo{
         width: 682px;
         pointer-events: none;

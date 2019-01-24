@@ -201,6 +201,15 @@
                         width: 100%;
                         display: block;
                     }
+                    .error{
+                        width: 135px;
+                        position: absolute;
+                        top: 0px;
+                        left: 0px;
+                        transform: translateY(-70%);
+                        display: block;
+                        pointer-events: none;
+                    }
                     .Harm{
                         width: 168px;
                         position: absolute;

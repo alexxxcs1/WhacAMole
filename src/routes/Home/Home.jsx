@@ -7,26 +7,33 @@ import RuleView from './Views/RuleView'
 import GameView from './Views/GameView'
 import RankView from './Views/RankView'
 import IsAuth from 'components/IsAuth'
+import ShareBox from 'components/ShareBox'
 
 import toplogo from 'assets/toplogo.png'
 import bottom from 'assets/bottom.png'
 import bg from 'assets/bg.png'
+import music from 'assets/music.png'
+import musicaudio from 'assets/musicaudio.m4a'
+
 
 export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      MusicOn:true,
       bottomshow:true,
       stageStatus:0,
     };
     this.customRoute = this.customRoute.bind(this);
     this.HandleStageStatus = this.HandleStageStatus.bind(this);
     this.onresize = this.onresize.bind(this);
+    this.MusicHandle = this.MusicHandle.bind(this);
   }
   componentDidMount()
   {
     let self = this;
     window.addEventListener('resize', this.onresize, false)
+    this.audioAutoPlay();
   }
   HandleStageStatus(status){
     this.state.stageStatus = status;
@@ -64,11 +71,46 @@ export class Home extends Component {
   componentWillUnmount(){
     window.removeEventListener('resize',this.onresize,false);
   }
+  audioAutoPlay() {
+    var audio = this.refs.music;
+    let self = this;
+    document.addEventListener(
+      "WeixinJSBridgeReady",
+      function() {
+        audio.currentTime = 0.0;
+        audio.play();
+      },
+      false
+    );
+    document.addEventListener(
+      "YixinJSBridgeReady",
+      function() {
+        audio.currentTime = 0.0;
+        audio.play();
+      },
+      false
+    );
+  }
+  MusicHandle(boolean){
+    if (boolean) {
+      this.refs.music.play();
+      
+    }else{
+      this.refs.music.pause();
+    }
+    this.state.MusicOn = boolean;
+    this.setState(this.state);
+  }
   render() {
     return (
       <div className={style.Box} style={{backgroundImage:'url('+bg+')'}}>
-          {/* <IsAuth /> */}
+          <IsAuth />
+          <ShareBox />
           <img src={toplogo} className={style.toplogo} alt=""/>
+          <audio src={musicaudio} ref='music' style={{opacity:0}} loop></audio>
+          <div className={[style.MucisBox,this.state.MusicOn?style.MusicOn:style.MusicOff].join(' ')} onClick={this.MusicHandle.bind(this,!this.state.MusicOn)}>
+            <img src={music} alt=""/>
+          </div>
           {this.customRoute()}
           {this.state.bottomshow?<div className={style.FloatBottom}>
             <img src={bottom} alt=""/>
