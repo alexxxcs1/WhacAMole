@@ -27,7 +27,7 @@ render() {
     <div className={[style.ViewBox,'childcenter','childcolumn'].join(' ')}>
         <img src={maintitle} className={style.maintitle} alt=""/>
         <div className={style.RuleDetial}>
-            <p>现在我们的小安遇到了点麻烦，让我们一起协助他，帮助他打倒怪地鼠。</p> 
+            <p>现在我们的小安遇到了点麻烦，让我们一起协助他，帮助他打倒怪地鼠，助力安理申跨越五亿。</p> 
             <p>1.“告白”安理申排行榜前10名2亿分，前500名1亿分</p> 
             <p>2.游戏时长1分钟，点击小易、小艾、诗诗、小邦、小思，即可获得分数（3百万分）</p> 
             <p>3.点击安理申产品地鼠，将扣取分数（3百万分）</p> 

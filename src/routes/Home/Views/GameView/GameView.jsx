@@ -246,6 +246,15 @@ gameRestart(){
     this.state.score = 0;
     this.state.gamepaused = false;
     this.state.gameResultShow = false;
+    for (let z = 0; z < ballonArray.length; z++) {
+        ballonArray[z].clicked = false;
+    }
+    ballonArray.sort(function() {
+        return .5 - Math.random();
+      });
+    TextData.sort(function() {
+        return .5 - Math.random();
+    });
     this.setState(this.state);
     this.gameStart();
 }
